@@ -25,9 +25,6 @@ run = neptune.init(
     monitoring_namespace=f"{base_namespace}/monitoring",
 )
 
-# (neptune-lightgbm integration) create neptune_callback to track LightGBM finetuning
-neptune_callback = NeptuneCallback(run=run, base_namespace=base_namespace)
-
 # (neptune) download model from the run
 run["lgbm_summary/pickled_model"].download("lgbm.model")
 with open("lgbm.model", "rb") as file:
@@ -64,7 +61,7 @@ run[base_namespace]["data/test/size"] = len(X_test)
 # (neptune) log train sample
 run[base_namespace]["data/raw_sample"].upload(neptune.types.File.as_html(data.head(20)))
 
-# (neptune) create neptune callback
+# (neptune-lightgbm integration) create neptune_callback to track LightGBM finetuning
 neptune_callback = NeptuneCallback(run=run, base_namespace=base_namespace)
 
 # define parameters
