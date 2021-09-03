@@ -58,7 +58,7 @@ run["data/raw_sample"].upload(neptune.types.File.as_html(data.head(20)))
 # (neptune) create neptune callback
 neptune_callback = NeptuneCallback(run=run, base_namespace="training")
 
-# Define parameters
+# define parameters
 params = {
     "boosting_type": "gbdt",
     "objective": "binary",
