@@ -63,10 +63,10 @@ parameters = {
 }
 
 # create RandomForestRegressor
-rfr = RandomForestClassifier(**parameters)
+rfc = RandomForestClassifier(**parameters)
 
-rfr.fit(X_train, y_train)
+rfc.fit(X_train, y_train)
 
 run["classifier_summary"] = npt_utils.create_classifier_summary(
-    rfr, X_train, X_test, y_train, y_test
+    rfc, X_train, X_test, y_train, y_test
 )
