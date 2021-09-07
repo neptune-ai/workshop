@@ -11,16 +11,16 @@ from sklearn.preprocessing import OrdinalEncoder
 base_namespace = "model_finetuning"
 
 # (neptune) fetch project
-project = neptune.get_project(name="<WORKSPACE/PROJECT>")
+project = neptune.get_project(name="common/workshop-with-titanic-data")
 
 # (neptune) find your best LightGBM run
-best_run_df = project.fetch_runs_table(owner="<USERNAME>>", tag="LightGBM").to_pandas()
+best_run_df = project.fetch_runs_table(owner="kamil", tag="LightGBM").to_pandas()
 best_run_df = best_run_df.sort_values(by=["training/testing/binary_logloss"])
 best_run_id = best_run_df["sys/id"].values[0]
 
 # (neptune) resume this run
 run = neptune.init(
-    project="<WORKSPACE/PROJECT>",
+    project="common/workshop-with-titanic-data",
     run=best_run_id,
     monitoring_namespace=f"{base_namespace}/monitoring",
 )

@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 
 run = neptune.init(
-    project="<WORKSPACE/PROJECT>",
+    project="common/workshop-with-titanic-data",
     name="titanic-training",
     tags=["scikit-learn"],
 )
@@ -57,8 +57,8 @@ run["data/raw_sample"].upload(neptune.types.File.as_html(data.head(20)))
 
 # define parameters
 parameters = {
-    "n_estimators": 101,
-    "max_depth": 7,
+    "n_estimators": 120,
+    "max_depth": 3,
     "min_samples_split": 3,
 }
 

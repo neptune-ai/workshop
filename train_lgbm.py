@@ -9,7 +9,7 @@ from sklearn.preprocessing import OrdinalEncoder
 
 # (neptune) create run
 run = neptune.init(
-    project="<WORKSPACE/PROJECT>",
+    project="common/workshop-with-titanic-data",
     name="titanic-training",
     tags=["LightGBM"]
 )
